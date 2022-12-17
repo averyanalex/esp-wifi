@@ -94,10 +94,6 @@ pub fn initialize(
     rng: hal::Rng,
     clocks: &Clocks,
 ) -> Result<(), InitializationError> {
-    if clocks.cpu_clock != MegahertzU32::MHz(160) {
-        return Err(InitializationError::WrongClockConfig);
-    }
-
     init_rng(rng);
     init_tasks();
     setup_timer_isr(systimer);
